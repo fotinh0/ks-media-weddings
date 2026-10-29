@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroVideo from "@/assets/hero.mp4.asset.json";
-import heroPoster from "@/assets/hero-poster.jpg.asset.json";
+import heroVideo from "@/assets/hero-cropped.mp4.asset.json";
+import heroWebm from "@/assets/hero-cropped.webm.asset.json";
+import heroPoster from "@/assets/hero-cropped.jpg.asset.json";
 import portrait from "@/assets/ks-portrait.jpg.asset.json";
 import { PageShell } from "@/components/site/PageShell";
 import { FilmCard } from "@/components/site/FilmCard";
@@ -32,16 +33,19 @@ function Index() {
   return (
     <PageShell overlay>
       {/* Hero */}
-      <section className="relative h-[100svh] min-h-[600px] overflow-hidden">
+      <section className="relative h-[85svh] min-h-[520px] max-h-[900px] overflow-hidden">
+        <img src={heroPoster.url} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src={heroVideo.url}
           poster={heroPoster.url}
           autoPlay
           muted
           loop
           playsInline
-        />
+        >
+          <source src={heroWebm.url} type="video/webm" />
+          <source src={heroVideo.url} type="video/mp4" />
+        </video>
         <div className="hero-scrim absolute inset-0" />
         <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 pb-24 text-center text-on-image">
           <p className="eyebrow fade-up">Wedding videographer · Los Angeles, California</p>

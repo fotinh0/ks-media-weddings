@@ -10,5 +10,7 @@
 <!-- LOVABLE:END -->
 
 - Film portfolio data (couples, Vimeo ids, packages) lives in `src/lib/films.ts`; pages read from it so adding a film is one edit.
+- Film embeds use the shared `FilmPlayer` with origin-checked Vimeo error handling and direct viewing links; playback remains independent of any database.
+- Homepage video uses cropped WebM and MP4 asset pointers with a poster fallback for cross-browser playback without letterboxing.
 - Site media from the old Squarespace site is hosted via lovable-assets pointers in `src/assets/*.asset.json`; never commit raw binaries.
 - Inquiries are emailed via FormSubmit AJAX from `InquiryForm.tsx` (no database storage, per owner choice); the old inquiries table is unused.

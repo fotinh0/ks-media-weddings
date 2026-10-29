@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/site/PageShell";
 import { InquirySection } from "@/components/site/InquiryForm";
 import { films, getFilm } from "@/lib/films";
+import { FilmPlayer } from "@/components/site/FilmPlayer";
 
 export const Route = createFileRoute("/films/$slug")({
   loader: ({ params }) => {
@@ -37,26 +38,14 @@ export const Route = createFileRoute("/films/$slug")({
 function FilmPage() {
   const film = Route.useLoaderData();
   const idx = films.findIndex((f) => f.slug === film.slug);
-  const next = films[(idx + 1) % films.length] ?? films[0]!;
+  const next = films[(idx + 1) % films.length] ?? film;
 
   return (
     <PageShell>
       <section className="mx-auto max-w-6xl px-6 pb-20 pt-14">
         <p className="eyebrow text-center text-muted-foreground">A wedding film</p>
         <h1 className="mt-3 text-center text-6xl md:text-7xl">{film.couple}</h1>
-        <div className="film-frame mt-12 aspect-video w-full bg-espresso">
-          {film.vimeoId ? (
-            <iframe
-              src={`https://player.vimeo.com/video/${film.vimeoId}?title=0&byline=0&portrait=0&dnt=1`}
-              title={`${film.couple} wedding film`}
-              className="h-full w-full"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          ) : (
-            <img src={film.image} alt={film.couple} className="h-full w-full object-cover" />
-          )}
-        </div>
+        <FilmPlayer key={film.slug} film={film} />
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t pt-8 md:flex-row">
           <Link to="/contact" className="eyebrow bg-espresso px-10 py-5 text-espresso-foreground hover:bg-accent hover:text-accent-foreground">
             Book your film
