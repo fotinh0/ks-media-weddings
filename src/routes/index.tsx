@@ -76,6 +76,25 @@ function Index() {
         </div>
       </section>
 
+      {/* Intro */}
+      <section className="border-t py-24 md:py-32">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <p className="script text-4xl text-accent fade-up">my approach</p>
+          <h2 className="fade-up mt-4 text-4xl md:text-6xl" style={{ animationDelay: "100ms" }}>
+            Capturing your wedding memories in a film that <em>feels like you</em>.
+          </h2>
+          <p className="fade-up mt-10 text-lg md:text-xl" style={{ animationDelay: "200ms" }}>
+            Combining art, aesthetics and emotion is my passion. I'm a wedding filmmaker based in
+            Southern California, filming celebrations near and far for the better part of a decade.
+          </p>
+          <p className="fade-up mt-6 text-lg text-muted-foreground md:text-xl" style={{ animationDelay: "300ms" }}>
+            My work is shaped by an editorial, cinematic eye — yet always rooted in real moments and
+            genuine emotion. I film with a calm, natural approach, preserving the quiet, heartfelt
+            in-betweens that often slip by unnoticed — exactly as they felt.
+          </p>
+        </div>
+      </section>
+
       {/* Featured films */}
       <section className="border-t py-28">
         <div className="mx-auto max-w-7xl px-6">

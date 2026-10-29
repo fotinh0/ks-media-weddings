@@ -23,14 +23,14 @@ export function PageIntro({
   title,
   children,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: ReactNode;
   children?: ReactNode;
 }) {
   return (
     <section className="mx-auto max-w-4xl px-6 pb-12 pt-16 text-center fade-up">
-      <p className="script text-4xl text-accent">{eyebrow}</p>
-      <h1 className="mt-2 text-6xl md:text-7xl">{title}</h1>
+      {eyebrow && <p className="script text-4xl text-accent">{eyebrow}</p>}
+      <h1 className={eyebrow ? "mt-2 text-6xl md:text-7xl" : "text-6xl md:text-7xl"}>{title}</h1>
       {children && (
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">{children}</p>
       )}
