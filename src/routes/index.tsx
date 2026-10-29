@@ -81,9 +81,7 @@ function Index() {
         <div className="mx-auto max-w-3xl px-6 text-center">
           <p className="script text-4xl text-accent fade-up">my approach</p>
           <h2 className="fade-up mt-4 text-4xl md:text-6xl" style={{ animationDelay: "100ms" }}>
-            Capturing your wedding memories
-            <br />
-            in a film that <em>feels like you</em>.
+            Capturing your wedding memories in a film that <em>feels like you</em>.
           </h2>
           <p className="fade-up mt-10 text-lg md:text-xl" style={{ animationDelay: "200ms" }}>
             Combining art, aesthetics and emotion is my passion. I'm a wedding filmmaker based in
