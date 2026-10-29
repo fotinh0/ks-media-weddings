@@ -6,7 +6,7 @@ import { FilmPlayer } from "@/components/site/FilmPlayer";
 
 export const Route = createFileRoute("/films/$slug")({
   validateSearch: (search: Record<string, unknown>) => ({
-    from: search.from === "home" || search.from === "portfolio" ? search.from : undefined,
+    from: search["from"] === "home" || search["from"] === "portfolio" ? search["from"] : undefined,
   }),
   loader: ({ params }) => {
     const film = getFilm(params.slug);

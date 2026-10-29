@@ -3,7 +3,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 
 // Inquiries are relayed by FormSubmit to this inbox; nothing is stored.
-const INQUIRY_EMAIL = "foti.ceci@gmail.com";
+const INQUIRY_EMAIL = "ksanxhakumedia@gmail.com";
 
 const schema = z.object({
   names: z.string().trim().min(1, "Please tell us your names").max(150),
