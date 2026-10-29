@@ -17,12 +17,22 @@ export type Film = {
 export const films: Film[] = [
   { slug: "matt-angie", couple: "Matt & Angie", image: mattAngie.url, vimeoId: "1105665651" },
   { slug: "jiwon-jae", couple: "Jiwon & Jae", image: jiwonJae.url, vimeoId: "1222264470" },
-  { slug: "lindsay-ariel", couple: "Lindsay & Ariel", image: lindsayAriel.url, vimeoId: "1222255591" },
+  {
+    slug: "lindsay-ariel",
+    couple: "Lindsay & Ariel",
+    image: lindsayAriel.url,
+    vimeoId: "1222255591",
+  },
   { slug: "ilina-grant", couple: "Ilina & Grant", image: ilinaGrant.url, vimeoId: "1222260454" },
   { slug: "lindsay-jeff", couple: "Lindsay & Jeff", image: lindsayJeff.url, vimeoId: "1105679510" },
   { slug: "julie-billy", couple: "Julie & Billy", image: julieBilly.url, vimeoId: "980871645" },
   { slug: "tom-taylor", couple: "Thomas & Taylor", image: tomTaylor.url },
-  { slug: "juliette-will", couple: "Juliette & Will", image: julietteWill.url, vimeoId: "892884514" },
+  {
+    slug: "juliette-will",
+    couple: "Juliette & Will",
+    image: julietteWill.url,
+    vimeoId: "892884514",
+  },
 ];
 
 export const getFilm = (slug: string) => films.find((f) => f.slug === slug);
@@ -31,6 +41,7 @@ export const packages = [
   {
     name: "The Highlight",
     price: "$2,850",
+    teaser: "A cinematic highlight film capturing the best moments of your day.",
     items: [
       "One videographer",
       "Up to 10 hours of coverage",
@@ -45,14 +56,13 @@ export const packages = [
     name: "The Story",
     price: "$3,250",
     featured: true,
-    items: [
-      "Everything in The Highlight",
-      "40–60 minute documentary film",
-    ],
+    teaser: "A documentary film that lets you relive the full story of your celebration.",
+    items: ["Everything in The Highlight", "40–60 minute documentary film"],
   },
   {
     name: "The Heirloom",
     price: "$4,050",
+    teaser: "A complete collection of films, including a teaser and documentary.",
     items: [
       "Two videographers",
       "Up to 10 hours of coverage",

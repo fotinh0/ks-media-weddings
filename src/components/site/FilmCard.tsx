@@ -2,9 +2,22 @@ import { Link } from "@tanstack/react-router";
 import { Play } from "lucide-react";
 import type { Film } from "@/lib/films";
 
-export function FilmCard({ film, large = false }: { film: Film; large?: boolean }) {
+export function FilmCard({
+  film,
+  large = false,
+  origin,
+}: {
+  film: Film;
+  large?: boolean;
+  origin: "home" | "portfolio";
+}) {
   return (
-    <Link to="/films/$slug" params={{ slug: film.slug }} className="group block">
+    <Link
+      to="/films/$slug"
+      params={{ slug: film.slug }}
+      search={{ from: origin }}
+      className="group block"
+    >
       <div className="relative aspect-video overflow-hidden bg-muted">
         <img
           src={film.image}

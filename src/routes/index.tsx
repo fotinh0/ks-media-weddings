@@ -86,7 +86,7 @@ function Index() {
       {/* Intro */}
       <section className="border-t py-24 md:py-32">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <p className="script text-4xl text-accent fade-up">your story, in motion</p>
+          <p className="eyebrow text-muted-foreground">your story, in motion</p>
           <h2 className="fade-up mt-4 text-4xl md:text-6xl" style={{ animationDelay: "100ms" }}>
             For the moments you’ll never want to forget.
           </h2>
@@ -121,7 +121,7 @@ function Index() {
           </div>
           <div className="grid gap-x-8 gap-y-14 md:grid-cols-2">
             {films.slice(0, 4).map((f) => (
-              <FilmCard key={f.slug} film={f} large />
+              <FilmCard key={f.slug} film={f} large origin="home" />
             ))}
           </div>
         </div>
@@ -146,14 +146,6 @@ function Index() {
       {/* About */}
       <section className="grain py-28">
         <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-2">
-          <div className="film-frame">
-            <img
-              src={portrait.url}
-              alt="KS Media Weddings filmmaker"
-              loading="lazy"
-              className="aspect-[4/5] w-full object-cover"
-            />
-          </div>
           <div>
             <h2 className="mt-2 text-5xl md:text-6xl">
               Capturing all the little and big moments of your day.
@@ -170,10 +162,18 @@ function Index() {
               More about me
             </Link>
           </div>
+          <div className="film-frame">
+            <img
+              src={portrait.url}
+              alt="KS Media Weddings filmmaker"
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover"
+            />
+          </div>
         </div>
       </section>
 
-      {/* Collections teaser */}
+      {/* Package teaser */}
       <section className="py-28">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <p className="eyebrow text-muted-foreground">Packages</p>
@@ -183,7 +183,7 @@ function Index() {
               <div key={p.name} className={`border p-10 ${p.featured ? "bg-card shadow-sm" : ""}`}>
                 <h3 className="text-3xl">{p.name}</h3>
                 <p className="mt-3 font-display text-5xl text-accent">{p.price}</p>
-                <p className="mt-4 text-sm text-muted-foreground">{p.items[p.items.length - 1]}</p>
+                <p className="mt-4 text-sm text-muted-foreground">{p.teaser}</p>
               </div>
             ))}
           </div>

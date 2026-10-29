@@ -19,13 +19,11 @@ const testimonials = [
     couple: "Lauren & Tom",
   },
   {
-    quote:
-      "Worth every penny. Our families have watched it more times than we have.",
+    quote: "Worth every penny. Our families have watched it more times than we have.",
     couple: "Jess & Andre",
   },
   {
-    quote:
-      "When the film played at our reception, the whole room went quiet. Pure magic.",
+    quote: "When the film played at our reception, the whole room went quiet. Pure magic.",
     couple: "Camille & Rob",
   },
 ];
@@ -48,8 +46,8 @@ export function TestimonialSection() {
   return (
     <section className="grain bg-espresso py-28 text-espresso-foreground">
       <div className="mx-auto max-w-4xl px-6 text-center">
-        <p className="eyebrow text-muted-foreground">Kind words</p>
-        <p className="script mt-3 text-4xl text-primary fade-up">love letters</p>
+        <p className="eyebrow text-primary">Kind words</p>
+        {/* <p className="script mt-3 text-4xl text-primary fade-up">love letters</p> */}
 
         <div
           className="mt-10 grid"
@@ -90,7 +88,9 @@ export function TestimonialSection() {
                 aria-label={`Show story ${i + 1}`}
                 onClick={() => goTo(i)}
                 className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                  i === index ? "bg-primary" : "bg-espresso-foreground/35 hover:bg-espresso-foreground/60"
+                  i === index
+                    ? "bg-primary"
+                    : "bg-espresso-foreground/35 hover:bg-espresso-foreground/60"
                 }`}
               />
             ))}

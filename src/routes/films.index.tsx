@@ -33,7 +33,7 @@ function FilmsPage() {
       <section className="mx-auto max-w-7xl px-6 pb-28">
         <div className="grid gap-x-8 gap-y-14 md:grid-cols-2">
           {films.map((f) => (
-            <FilmCard key={f.slug} film={f} />
+            <FilmCard key={f.slug} film={f} origin="portfolio" />
           ))}
         </div>
       </section>
