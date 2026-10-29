@@ -6,6 +6,7 @@ import portrait from "@/assets/ks-portrait.jpg.asset.json";
 import { PageShell } from "@/components/site/PageShell";
 import { FilmCard } from "@/components/site/FilmCard";
 import { InquirySection } from "@/components/site/InquiryForm";
+import { TestimonialSection } from "@/components/site/Testimonials";
 import { films, packages } from "@/lib/films";
 
 export const Route = createFileRoute("/")({
@@ -194,6 +195,8 @@ function Index() {
           </Link>
         </div>
       </section>
+
+      <TestimonialSection />
 
       <InquirySection />
     </PageShell>
