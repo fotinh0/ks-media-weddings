@@ -90,7 +90,7 @@ function Index() {
             intention, with artistry, with soul.
           </p>
           <p className="fade-up mt-6 text-lg text-muted-foreground md:text-xl" style={{ animationDelay: "300ms" }}>
-            We film with a calm, natural approach — preserving the quiet, heartfelt in-betweens
+            Filmed with a calm, natural approach — preserving the quiet, heartfelt in-betweens
             that often slip by unnoticed, so you can relive them exactly as they felt.
           </p>
         </div>
