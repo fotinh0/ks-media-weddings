@@ -16,7 +16,8 @@ const schema = z.object({
   message: z.string().trim().max(2000).optional(),
 });
 
-const field = "w-full border-0 border-b border-input bg-transparent px-0 py-3 text-base placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-0";
+const field =
+  "w-full border-0 border-b border-input bg-transparent px-0 py-3 text-base placeholder:text-muted-foreground/70 focus:border-accent focus:outline-none focus:ring-0";
 
 export function InquiryForm() {
   const [busy, setBusy] = useState(false);
@@ -73,7 +74,9 @@ export function InquiryForm() {
     return (
       <div className="py-16 text-center">
         <p className="script text-5xl text-accent">Thank you</p>
-        <p className="mt-4 text-lg">Your note is on its way. I'll be in touch soon to talk about your day.</p>
+        <p className="mt-4 text-lg">
+          Your note is on its way. I'll be in touch soon to talk about your day.
+        </p>
       </div>
     );
   }
@@ -117,7 +120,12 @@ export function InquiryForm() {
       </label>
       <label className="block md:col-span-2">
         <span className="eyebrow text-muted-foreground">Tell me about your day</span>
-        <textarea name="message" rows={4} className={field} placeholder="The vibe, the people, the little things you want to remember…" />
+        <textarea
+          name="message"
+          rows={4}
+          className={field}
+          placeholder="The vibe, the people, the little things you want to remember…"
+        />
       </label>
       <div className="md:col-span-2">
         <button
@@ -132,15 +140,15 @@ export function InquiryForm() {
   );
 }
 
-export function InquirySection({ title = "Is your date still open?" }: { title?: string }) {
+export function InquirySection({ title = "Tell us about your special day!" }: { title?: string }) {
   return (
     <section id="inquire" className="grain border-t bg-secondary py-24">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 md:grid-cols-[1fr_1.6fr]">
         <div>
-          <p className="script text-4xl text-accent">say hello</p>
           <h2 className="mt-2 text-5xl md:text-6xl">{title}</h2>
           <p className="mt-6 text-muted-foreground">
-            Share a few details and I'll reply with availability and set up a free consultation to talk through your day.
+            Share a few details and I'll reply with availability and set up a free consultation to
+            talk through your day.
           </p>
         </div>
         <InquiryForm />

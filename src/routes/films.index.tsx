@@ -8,9 +8,15 @@ export const Route = createFileRoute("/films/")({
   head: () => ({
     meta: [
       { title: "Wedding Films — KS Media Weddings" },
-      { name: "description", content: "Watch wedding films by KS Media Weddings, a Los Angeles wedding videographer." },
+      {
+        name: "description",
+        content: "Watch wedding films by KS Media Weddings, a Los Angeles wedding videographer.",
+      },
       { property: "og:title", content: "Wedding Films — KS Media Weddings" },
-      { property: "og:description", content: "Real couples, real moments. Watch the full portfolio of wedding films." },
+      {
+        property: "og:description",
+        content: "Real couples, real moments. Watch the full portfolio of wedding films.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -31,7 +37,6 @@ function FilmsPage() {
           ))}
         </div>
       </section>
-      <InquirySection title="Want a film like these?" />
     </PageShell>
   );
 }

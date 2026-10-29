@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const nav = [
-  { to: "/films", label: "Films" },
   { to: "/about", label: "About" },
+  { to: "/films", label: "Portfolio" },
   { to: "/packages", label: "Packages" },
 ] as const;
 
@@ -31,14 +31,21 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         </Link>
         <nav className="hidden items-center gap-10 md:flex">
           {nav.map((n) => (
-            <Link key={n.to} to={n.to} className="eyebrow opacity-90 hover:opacity-100" activeProps={{ className: "underline underline-offset-8" }}>
+            <Link
+              key={n.to}
+              to={n.to}
+              className="eyebrow opacity-90 hover:opacity-100"
+              activeProps={{ className: "underline underline-offset-8" }}
+            >
               {n.label}
             </Link>
           ))}
           <Link
             to="/contact"
             className={`eyebrow border px-5 py-3 transition-colors ${
-              light ? "border-on-image/70 hover:bg-on-image hover:text-foreground" : "border-primary bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent"
+              light
+                ? "border-on-image/70 hover:bg-on-image hover:text-foreground"
+                : "border-primary bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent"
             }`}
           >
             Check availability
@@ -51,11 +58,20 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
       {open && (
         <nav className="flex flex-col gap-6 border-t px-6 py-8 md:hidden">
           {nav.map((n) => (
-            <Link key={n.to} to={n.to} className="font-display text-3xl" onClick={() => setOpen(false)}>
+            <Link
+              key={n.to}
+              to={n.to}
+              className="font-display text-3xl"
+              onClick={() => setOpen(false)}
+            >
               {n.label}
             </Link>
           ))}
-          <Link to="/contact" className="font-display text-3xl italic text-accent" onClick={() => setOpen(false)}>
+          <Link
+            to="/contact"
+            className="font-display text-3xl italic text-accent"
+            onClick={() => setOpen(false)}
+          >
             Check availability
           </Link>
         </nav>
