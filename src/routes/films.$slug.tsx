@@ -37,7 +37,7 @@ export const Route = createFileRoute("/films/$slug")({
 function FilmPage() {
   const film = Route.useLoaderData();
   const idx = films.findIndex((f) => f.slug === film.slug);
-  const next = films[(idx + 1) % films.length];
+  const next = films[(idx + 1) % films.length] ?? films[0]!;
 
   return (
     <PageShell>

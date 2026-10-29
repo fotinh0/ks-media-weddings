@@ -67,12 +67,12 @@ export function InquiryForm() {
       <label className="block">
         <span className="eyebrow text-muted-foreground">Your names *</span>
         <input name="names" className={field} placeholder="Angie & Matt" />
-        {errors.names && <span className="text-sm text-destructive">{errors.names}</span>}
+        {errors["names"] && <span className="text-sm text-destructive">{errors["names"]}</span>}
       </label>
       <label className="block">
         <span className="eyebrow text-muted-foreground">Email *</span>
         <input name="email" type="email" className={field} placeholder="you@email.com" />
-        {errors.email && <span className="text-sm text-destructive">{errors.email}</span>}
+        {errors["email"] && <span className="text-sm text-destructive">{errors["email"]}</span>}
       </label>
       <label className="block">
         <span className="eyebrow text-muted-foreground">Wedding date</span>
