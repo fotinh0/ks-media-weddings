@@ -27,12 +27,6 @@ export const films: Film[] = [
   { slug: "lindsay-jeff", couple: "Lindsay & Jeff", image: lindsayJeff.url, vimeoId: "1105679510" },
   { slug: "julie-billy", couple: "Julie & Billy", image: julieBilly.url, vimeoId: "980871645" },
   { slug: "tom-taylor", couple: "Thomas & Taylor", image: tomTaylor.url },
-  {
-    slug: "juliette-will",
-    couple: "Juliette & Will",
-    image: julietteWill.url,
-    vimeoId: "892884514",
-  },
 ];
 
 export const getFilm = (slug: string) => films.find((f) => f.slug === slug);
