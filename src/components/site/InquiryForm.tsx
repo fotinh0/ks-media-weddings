@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+
+// Inquiries are relayed by FormSubmit to this inbox; nothing is stored.
+const INQUIRY_EMAIL = "foti.ceci@gmail.com";
 
 const schema = z.object({
   names: z.string().trim().min(1, "Please tell us your names").max(150),
@@ -34,19 +36,33 @@ export function InquiryForm() {
     setErrors({});
     setBusy(true);
     const d = parsed.data;
-    const clean = (v?: string) => (v ? v : null);
-    const { error } = await supabase.from("inquiries").insert({
-      names: d.names,
-      email: d.email,
-      wedding_date: clean(d.wedding_date),
-      venue: clean(d.venue),
-      guest_count: clean(d.guest_count),
-      budget: clean(d.budget),
-      heard_from: clean(d.heard_from),
-      message: clean(d.message),
-    });
+    let ok = false;
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${INQUIRY_EMAIL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `New wedding inquiry from ${d.names}`,
+          _template: "table",
+          _captcha: "false",
+          _replyto: d.email,
+          Names: d.names,
+          Email: d.email,
+          "Wedding date": d.wedding_date || "—",
+          Venue: d.venue || "—",
+          "Guest count": d.guest_count || "—",
+          "Package interest": d.budget || "Not sure yet",
+          "Heard about us": d.heard_from || "—",
+          Message: d.message || "—",
+        }),
+      });
+      const json = (await res.json().catch(() => ({}))) as { success?: string | boolean };
+      ok = res.ok && String(json.success) !== "false";
+    } catch {
+      ok = false;
+    }
     setBusy(false);
-    if (error) {
+    if (!ok) {
       toast.error("Something went wrong sending your note. Please try again or email us directly.");
       return;
     }

@@ -11,4 +11,4 @@
 
 - Film portfolio data (couples, Vimeo ids, packages) lives in `src/lib/films.ts`; pages read from it so adding a film is one edit.
 - Site media from the old Squarespace site is hosted via lovable-assets pointers in `src/assets/*.asset.json`; never commit raw binaries.
-- Inquiries are inserted from the browser into `public.inquiries` (anon insert-only RLS, DB length checks + zod client validation).
+- Inquiries are emailed via FormSubmit AJAX from `InquiryForm.tsx` (no database storage, per owner choice); the old inquiries table is unused.
