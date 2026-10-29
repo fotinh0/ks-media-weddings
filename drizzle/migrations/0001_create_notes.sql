@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.inquiries IS 'DEPRECATED: unused — the site emails inquiries via FormSubmit instead; no app code reads or writes this table. Safe to remove.';
