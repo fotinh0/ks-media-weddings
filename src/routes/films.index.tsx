@@ -27,7 +27,7 @@ export const Route = createFileRoute("/films/")({
 function FilmsPage() {
   return (
     <PageShell>
-      <PageIntro eyebrow="the films" title="Love stories, on film">
+      <PageIntro title="Love stories, on film">
         Every couple is different, so every film is too. Grab a cozy seat and press play.
       </PageIntro>
       <section className="mx-auto max-w-7xl px-6 pb-28">
