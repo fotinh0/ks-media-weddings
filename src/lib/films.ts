@@ -40,7 +40,7 @@ export const getFilm = (slug: string) => films.find((f) => f.slug === slug);
 export const packages = [
   {
     name: "The Highlight",
-    price: "$2,850",
+    price: "$3,250",
     teaser: "A cinematic highlight film capturing the best moments of your day.",
     items: [
       "One videographer",
@@ -54,14 +54,14 @@ export const packages = [
   },
   {
     name: "The Story",
-    price: "$3,250",
+    price: "$3,850",
     featured: true,
     teaser: "A documentary film that lets you relive the full story of your celebration.",
     items: ["Everything in The Highlight", "40–60 minute documentary film"],
   },
   {
     name: "The Heirloom",
-    price: "$4,050",
+    price: "$5,050",
     teaser: "A complete collection of films, including a teaser and documentary.",
     items: [
       "Two videographers",
