@@ -56,16 +56,10 @@ function Index() {
         <div className="hero-scrim absolute inset-0" />
         <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 pb-24 text-center text-on-image">
           <p className="eyebrow fade-up">Wedding videographer · Los Angeles, California</p>
-          <h1
-            className="fade-up mt-6 max-w-5xl text-5xl md:text-8xl"
-            style={{ animationDelay: "150ms" }}
-          >
+          <h1 className="fade-up mt-6 max-w-5xl text-5xl md:text-8xl" style={{ animationDelay: "150ms" }}>
             Films that let you <em>feel it all</em> again
           </h1>
-          <div
-            className="fade-up mt-10 flex flex-col gap-4 sm:flex-row"
-            style={{ animationDelay: "300ms" }}
-          >
+          <div className="fade-up mt-10 flex flex-col gap-4 sm:flex-row" style={{ animationDelay: "300ms" }}>
             <Link
               to="/films"
               className="eyebrow bg-primary px-10 py-5 text-primary-foreground transition-colors hover:bg-on-image"
@@ -82,36 +76,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="grain py-28">
-        <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-2">
-          <div className="film-frame">
-            <img
-              src={portrait.url}
-              alt="KS Media Weddings filmmaker"
-              loading="lazy"
-              className="aspect-[4/5] w-full object-cover"
-            />
-          </div>
-          <div>
-            <h2 className="mt-2 text-5xl md:text-6xl">
-              Capturing all the little and big moments of your day.
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Based in Southern California and filming wherever your love goes. With a film
-              production degree from NYU and seven years behind the camera at weddings, I tailor
-              every film to your personality and style — so it feels unmistakably yours.
-            </p>
-            <Link
-              to="/about"
-              className="eyebrow mt-8 inline-block border-b border-foreground pb-1 hover:text-accent hover:border-accent"
-            >
-              More about me
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Featured films */}
       <section className="border-t py-28">
         <div className="mx-auto max-w-7xl px-6">
@@ -120,10 +84,7 @@ function Index() {
               <p className="eyebrow text-muted-foreground">Recent work</p>
               <h2 className="mt-3 text-5xl md:text-6xl">Featured films</h2>
             </div>
-            <Link
-              to="/films"
-              className="eyebrow border-b border-foreground pb-1 hover:text-accent hover:border-accent"
-            >
+            <Link to="/films" className="eyebrow border-b border-foreground pb-1 hover:text-accent hover:border-accent">
               View all films
             </Link>
           </div>
@@ -147,6 +108,34 @@ function Index() {
                 <p className="mt-3 text-sm opacity-75">{d}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section className="grain py-28">
+        <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-2">
+          <div className="film-frame">
+            <img
+              src={portrait.url}
+              alt="KS Media Weddings filmmaker"
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover"
+            />
+          </div>
+          <div>
+            <h2 className="mt-2 text-5xl md:text-6xl">Capturing all the little and big moments of your day.</h2>
+            <p className="mt-6 text-lg text-muted-foreground">
+              Based in Southern California and filming wherever your love goes. With a film production degree from NYU
+              and seven years behind the camera at weddings, I tailor every film to your personality and style — so it
+              feels unmistakably yours.
+            </p>
+            <Link
+              to="/about"
+              className="eyebrow mt-8 inline-block border-b border-foreground pb-1 hover:text-accent hover:border-accent"
+            >
+              More about me
+            </Link>
           </div>
         </div>
       </section>
