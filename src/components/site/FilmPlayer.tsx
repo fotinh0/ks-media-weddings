@@ -10,16 +10,25 @@ export function FilmPlayer({ film }: { film: Film }) {
 
   useEffect(() => {
     setUnavailable(false);
+    const timeout = window.setTimeout(() => setUnavailable(true), 12000);
     const onMessage = (event: MessageEvent) => {
       if (event.origin !== "https://player.vimeo.com" || event.source !== frame.current?.contentWindow) return;
       let data = event.data;
       if (typeof data === "string") {
         try { data = JSON.parse(data); } catch { return; }
       }
-      if (data?.event === "error") setUnavailable(true);
+      if (data?.event === "ready" || data?.method === "ping") window.clearTimeout(timeout);
+      if (data?.event === "error") {
+        window.clearTimeout(timeout);
+        setUnavailable(true);
+      }
     };
     window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
+    frame.current?.contentWindow?.postMessage(JSON.stringify({ method: "ping" }), "https://player.vimeo.com");
+    return () => {
+      window.clearTimeout(timeout);
+      window.removeEventListener("message", onMessage);
+    };
   }, [film.vimeoId, attempt]);
 
   return (
@@ -42,7 +51,7 @@ export function FilmPlayer({ film }: { film: Film }) {
         )}
         {unavailable && (
           <div role="status" className="hero-scrim absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center text-on-image">
-            <p className="max-w-sm text-lg">Vimeo is currently blocking this film’s playback.</p>
+            <p className="max-w-sm text-lg">This film couldn’t connect to Vimeo.</p>
             <Button variant="secondary" onClick={() => { setUnavailable(false); setAttempt((value) => value + 1); }}>
               <RotateCcw /> Try again
             </Button>
