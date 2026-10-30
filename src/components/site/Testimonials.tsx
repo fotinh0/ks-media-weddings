@@ -4,22 +4,14 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 // Real client reviews (Zola and wedding directories), excerpted verbatim to fit the carousel.
 export const testimonials = [
   {
-    quote: "This is the videographer you want by your side capturing life's big moments.",
+    quote:
+      "Kristi went above and beyond to ensure our wedding day was absolutely perfect. He truly felt like another one of our guests.",
     name: "Gabrielle B.",
   },
   {
     quote:
-      "Thank you so much Kristi for this once in a lifetime fairytale movie you created of our love!",
+      "The first 30 seconds we were bawling our eyes out… it captured the everlasting love we truly have for each other, while also capturing many of our most important people in our lives.",
     name: "Juliette E.",
-  },
-  {
-    quote: "The final product they delivered was truly top-notch and so heart-warming.",
-    name: "Mk V.",
-  },
-  {
-    quote:
-      "Words cannot describe the wedding video that KS media production made for me and my husband! We were astounded watching it in tears!",
-    name: "Juliette L.",
   },
   {
     quote:
@@ -30,6 +22,16 @@ export const testimonials = [
     quote:
       "He worked seamlessly throughout the day, capturing every special moment without ever feeling intrusive.",
     name: "Mylee M.",
+  },
+  {
+    quote:
+      "My husband is usually quite shy, but they made him feel completely comfortable and relaxed in front of the camera. The final product they delivered was truly top-notch and so heart-warming.",
+    name: "Mk V.",
+  },
+  {
+    quote:
+      "Words cannot describe the wedding video that KS media production made for me and my husband! We were astounded watching it in tears!",
+    name: "Juliette L.",
   },
 ];
 
