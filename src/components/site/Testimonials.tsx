@@ -25,7 +25,7 @@ export const testimonials = [
   },
   {
     quote:
-      "My husband is usually quite shy, but they made him feel completely comfortable and relaxed in front of the camera. The final product they delivered was truly top-notch and so heart-warming.",
+      "My husband is usually quite shy, but they made him feel completely comfortable and relaxed in front of the camera. The final product they delivered was so heart-warming.",
     name: "Mk V.",
   },
   {
@@ -51,13 +51,13 @@ export function TestimonialSection() {
   const goTo = (i: number) => setIndex((i + testimonials.length) % testimonials.length);
 
   return (
-    <section className="grain bg-espresso py-28 text-espresso-foreground">
+    <section className="grain bg-espresso py-16 text-espresso-foreground md:py-20">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <p className="eyebrow text-primary">Kind words</p>
         {/* <p className="script mt-3 text-4xl text-primary fade-up">love letters</p> */}
 
         <div
-          className="mt-10 grid"
+          className="mt-6 grid"
           onMouseEnter={() => (paused.current = true)}
           onMouseLeave={() => (paused.current = false)}
           onTouchStart={() => (paused.current = true)}
@@ -70,15 +70,15 @@ export function TestimonialSection() {
                 i === index ? "opacity-100" : "pointer-events-none opacity-0"
               }`}
             >
-              <blockquote className="font-display text-3xl italic leading-snug md:text-4xl">
+              <blockquote className="font-display text-2xl italic leading-snug md:text-3xl">
                 “{t.quote}”
               </blockquote>
-              <figcaption className="eyebrow mt-8 opacity-80">— {t.name}</figcaption>
+              <figcaption className="eyebrow mt-5 opacity-80">— {t.name}</figcaption>
             </figure>
           ))}
         </div>
 
-        <div className="mt-12 flex items-center justify-center gap-6">
+        <div className="mt-8 flex items-center justify-center gap-6">
           <button
             type="button"
             aria-label="Previous story"
