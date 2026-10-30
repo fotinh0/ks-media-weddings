@@ -2,8 +2,9 @@ import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 
-// Inquiries are relayed by FormSubmit to this inbox; nothing is stored.
-const INQUIRY_EMAIL = "ksanxhakumedia@gmail.com";
+// Inquiries are relayed by Web3Forms to ksanxhakumedia@gmail.com; nothing is stored.
+// The access key is public by design (Web3Forms client-side key).
+const WEB3FORMS_KEY = "97b8456a-97b7-4537-adcd-35d1d7d96f48";
 
 const schema = z.object({
   names: z.string().trim().min(1, "Please tell us your names").max(150),
@@ -39,14 +40,15 @@ export function InquiryForm() {
     const d = parsed.data;
     let ok = false;
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${INQUIRY_EMAIL}`, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          _subject: `New wedding inquiry from ${d.names}`,
-          _template: "table",
-          _captcha: "false",
-          _replyto: d.email,
+          access_key: WEB3FORMS_KEY,
+          subject: `New wedding inquiry from ${d.names}`,
+          from_name: "KS Media Weddings website",
+          replyto: d.email,
+          botcheck: raw["botcheck"] || "",
           Names: d.names,
           Email: d.email,
           "Wedding date": d.wedding_date || "—",
@@ -57,8 +59,8 @@ export function InquiryForm() {
           Message: d.message || "—",
         }),
       });
-      const json = (await res.json().catch(() => ({}))) as { success?: string | boolean };
-      ok = res.ok && String(json.success) !== "false";
+      const json = (await res.json().catch(() => ({}))) as { success?: boolean };
+      ok = res.ok && json.success === true;
     } catch {
       ok = false;
     }
@@ -83,6 +85,7 @@ export function InquiryForm() {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-x-10 gap-y-6 md:grid-cols-2" noValidate>
+      <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
       <label className="block">
         <span className="eyebrow text-muted-foreground">Your names *</span>
         <input name="names" className={field} placeholder="Angie & Matt" />
