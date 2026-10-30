@@ -75,10 +75,8 @@ export function InquiryForm() {
   if (sent) {
     return (
       <div className="py-16 text-center">
-        <p className="script text-5xl text-accent">Thank you</p>
-        <p className="mt-4 text-lg">
-          Your note is on its way. I'll be in touch soon to talk about your day.
-        </p>
+        <p className="text-5xl text-accent">Thank you</p>
+        <p className="mt-4 text-lg">Your note is on its way. I'll be in touch soon to talk about your day.</p>
       </div>
     );
   }
@@ -150,8 +148,8 @@ export function InquirySection({ title = "Tell us about your special day!" }: { 
         <div>
           <h2 className="mt-2 text-5xl md:text-6xl">{title}</h2>
           <p className="mt-6 text-muted-foreground">
-            Share a few details and I'll reply with availability and set up a free consultation to
-            talk through your day.
+            Share a few details and I'll reply with availability and set up a free consultation to talk through your
+            day.
           </p>
         </div>
         <InquiryForm />
