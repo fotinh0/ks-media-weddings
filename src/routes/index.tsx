@@ -8,25 +8,26 @@ import { FilmCard } from "@/components/site/FilmCard";
 import { InquirySection } from "@/components/site/InquiryForm";
 import { TestimonialSection } from "@/components/site/Testimonials";
 import { films, packages } from "@/lib/films";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "KS Media Weddings — Wedding Videographer in Los Angeles" },
-      {
-        name: "description",
-        content:
-          "Cinematic, heartfelt wedding films in Los Angeles and Southern California. Watch the films and check your date.",
-      },
-      { property: "og:title", content: "KS Media Weddings — Wedding Videographer in Los Angeles" },
-      {
-        property: "og:description",
-        content: "Cinematic, heartfelt wedding films in Los Angeles and Southern California.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const seo = pageHead({
+      title: "KS Media Weddings — Wedding Videographer in Los Angeles",
+      description:
+        "Cinematic, heartfelt wedding films in Los Angeles and Southern California, with drone and 4K+ in every package. Watch the films and check your date.",
+      path: "/",
+      imageAlt: "A still from a wedding film by KS Media Weddings",
+    });
+    return {
+      ...seo,
+      // The poster is the first thing painted (LCP), so fetch it before the stylesheet finishes.
+      links: [
+        ...seo.links,
+        { rel: "preload", as: "image", href: heroPoster.url, fetchPriority: "high" },
+      ],
+    };
+  },
   component: Index,
 });
 
@@ -56,12 +57,16 @@ function Index() {
         </video>
         <div className="hero-scrim absolute inset-0" />
         <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 pb-24 text-center text-on-image">
-          <p className="eyebrow fade-up">Wedding videographer · Los Angeles, California</p>
-          <h1
-            className="fade-up mt-6 max-w-5xl text-5xl md:text-8xl"
-            style={{ animationDelay: "150ms" }}
-          >
-            Films that let you <em>feel it all</em> again
+          <h1 className="max-w-5xl">
+            <span className="eyebrow fade-up block">
+              Wedding videographer · Los Angeles, California
+            </span>
+            <span
+              className="fade-up mt-6 block text-5xl md:text-8xl"
+              style={{ animationDelay: "150ms" }}
+            >
+              Films that let you <em>feel it all</em> again
+            </span>
           </h1>
           <div
             className="fade-up mt-10 flex flex-col gap-4 sm:flex-row"
@@ -165,7 +170,7 @@ function Index() {
           <div className="film-frame">
             <img
               src={portrait.url}
-              alt="KS Media Weddings filmmaker"
+              alt="Kristi Sanxhaku, Los Angeles wedding videographer"
               loading="lazy"
               className="aspect-[4/5] w-full object-cover"
             />

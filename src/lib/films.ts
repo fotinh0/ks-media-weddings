@@ -12,22 +12,68 @@ export type Film = {
   couple: string;
   image: string;
   vimeoId?: string;
+  /** Vimeo upload date (YYYY-MM-DD) and length in seconds, for VideoObject structured data. */
+  uploadDate?: string;
+  duration?: number;
+  /** Optional short story of the day (venue, city, a detail) shown on the film page. */
+  summary?: string;
 };
 
-export const films: Film[] = [
-  { slug: "matt-angie", couple: "Matt & Angie", image: mattAngie.url, vimeoId: "1105665651" },
-  { slug: "jiwon-jae", couple: "Jiwon & Jae", image: jiwonJae.url, vimeoId: "1222264470" },
+const allFilms: Film[] = [
+  {
+    slug: "matt-angie",
+    couple: "Matt & Angie",
+    image: mattAngie.url,
+    vimeoId: "1105665651",
+    uploadDate: "2025-07-30",
+    duration: 369,
+  },
+  {
+    slug: "jiwon-jae",
+    couple: "Jiwon & Jae",
+    image: jiwonJae.url,
+    vimeoId: "1222264470",
+    uploadDate: "2026-08-29",
+    duration: 359,
+  },
   {
     slug: "lindsay-ariel",
     couple: "Lindsay & Ariel",
     image: lindsayAriel.url,
     vimeoId: "1222255591",
+    uploadDate: "2026-08-28",
+    duration: 355,
   },
-  { slug: "ilina-grant", couple: "Ilina & Grant", image: ilinaGrant.url, vimeoId: "1222260454" },
-  { slug: "lindsay-jeff", couple: "Lindsay & Jeff", image: lindsayJeff.url, vimeoId: "1105679510" },
-  { slug: "julie-billy", couple: "Julie & Billy", image: julieBilly.url, vimeoId: "980871645" },
+  {
+    slug: "ilina-grant",
+    couple: "Ilina & Grant",
+    image: ilinaGrant.url,
+    vimeoId: "1222260454",
+    uploadDate: "2026-08-29",
+    duration: 725,
+  },
+  {
+    slug: "lindsay-jeff",
+    couple: "Lindsay & Jeff",
+    image: lindsayJeff.url,
+    vimeoId: "1105679510",
+    uploadDate: "2025-07-30",
+    duration: 312,
+  },
+  {
+    slug: "julie-billy",
+    couple: "Julie & Billy",
+    image: julieBilly.url,
+    vimeoId: "980871645",
+    uploadDate: "2024-07-08",
+    duration: 446,
+  },
+  // Hidden until its Vimeo id is added — a film page without a film is thin content.
   { slug: "tom-taylor", couple: "Thomas & Taylor", image: tomTaylor.url },
 ];
+
+/** Published films: only those with a playable Vimeo video. */
+export const films: Film[] = allFilms.filter((f) => f.vimeoId);
 
 export const getFilm = (slug: string) => films.find((f) => f.slug === slug);
 

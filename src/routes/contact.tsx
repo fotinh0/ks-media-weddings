@@ -2,24 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { CONTACT_EMAIL } from "@/lib/films";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Check Your Date — KS Media Weddings" },
-      {
-        name: "description",
-        content: "Inquire about wedding videography availability and book a free consultation.",
-      },
-      { property: "og:title", content: "Check Your Date — KS Media Weddings" },
-      {
-        property: "og:description",
-        content: "Tell me about your wedding and book a free consultation.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Contact & Check Your Date — Los Angeles Wedding Videographer",
+      description:
+        "Check availability for your wedding date and book a free consultation with KS Media Weddings, a Los Angeles and Southern California wedding videographer.",
+      path: "/contact",
+    }),
   component: Contact,
 });
 

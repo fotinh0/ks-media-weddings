@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { films, getFilm } from "@/lib/films";
 import { FilmPlayer } from "@/components/site/FilmPlayer";
+import { filmJsonLd, jsonLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/films/$slug")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -13,21 +14,31 @@ export const Route = createFileRoute("/films/$slug")({
     if (!film) throw notFound();
     return film;
   },
-  head: ({ loaderData }) => {
-    const t = loaderData
-      ? `${loaderData.couple} — Wedding Film | KS Media Weddings`
-      : "Film not found";
-    const d = loaderData
-      ? `Watch ${loaderData.couple}'s wedding film by KS Media Weddings.`
-      : "This film could not be found.";
+  head: ({ loaderData: film }) => {
+    if (!film) {
+      return {
+        meta: [{ title: "Film not found" }, { name: "robots", content: "noindex" }],
+      };
+    }
+    const description =
+      film.summary ??
+      `Watch ${film.couple}'s wedding film — a cinematic, heartfelt wedding video by KS Media Weddings, Los Angeles wedding videographer.`;
+    const seo = pageHead({
+      title: `${film.couple} — Wedding Film | KS Media Weddings`,
+      description,
+      path: `/films/${film.slug}`,
+      image: film.image,
+      imageAlt: `${film.couple} wedding film`,
+      type: "video.other",
+    });
     return {
+      ...seo,
       meta: [
-        { title: t },
-        { name: "description", content: d },
-        { property: "og:title", content: t },
-        { property: "og:description", content: d },
-        { property: "og:type", content: "video.other" },
-        { name: "twitter:card", content: "summary_large_image" },
+        ...seo.meta,
+        ...(film.vimeoId
+          ? [{ property: "og:video", content: `https://player.vimeo.com/video/${film.vimeoId}` }]
+          : []),
+        jsonLd(filmJsonLd(film, description)),
       ],
     };
   },
@@ -63,6 +74,11 @@ function FilmPage() {
         </Link>
         <p className="eyebrow text-center text-muted-foreground">A wedding film</p>
         <h1 className="mt-3 text-center text-6xl md:text-7xl">{film.couple}</h1>
+        {film.summary && (
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-muted-foreground">
+            {film.summary}
+          </p>
+        )}
         <FilmPlayer key={film.slug} film={film} />
         <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t pt-8 md:flex-row">
           <Link

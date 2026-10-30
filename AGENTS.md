@@ -14,3 +14,4 @@
 - Homepage video uses cropped WebM and MP4 asset pointers with a poster fallback for cross-browser playback without letterboxing.
 - Site media from the old Squarespace site is hosted via lovable-assets pointers in `src/assets/*.asset.json`; never commit raw binaries.
 - Inquiries are emailed via Web3Forms (public access key) from `InquiryForm.tsx` (no database storage, per owner choice); the old inquiries table is unused.
+- SEO tags (canonical, Open Graph, JSON-LD) come from `pageHead` in `src/lib/seo.ts` with site URL https://ks-media-weddings.com; `/sitemap.xml` is generated from `films`, which only publishes films that have a `vimeoId`.

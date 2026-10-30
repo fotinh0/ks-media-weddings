@@ -2,22 +2,19 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import portrait from "@/assets/ks-portrait.jpg.asset.json";
 import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { InquirySection } from "@/components/site/InquiryForm";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — KS Media Weddings" },
-      {
-        name: "description",
-        content:
-          "NYU-trained filmmaker with 7 years filming weddings across Southern California and beyond.",
-      },
-      { property: "og:title", content: "About — KS Media Weddings" },
-      { property: "og:description", content: "Meet the filmmaker behind KS Media Weddings." },
-      { property: "og:type", content: "profile" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "About Kristi Sanxhaku — Los Angeles Wedding Videographer",
+      description:
+        "Meet Kristi Sanxhaku, the NYU-trained filmmaker behind KS Media Weddings, with seven years filming weddings across Southern California and beyond.",
+      path: "/about",
+      image: portrait.url,
+      imageAlt: "Kristi Sanxhaku with a vintage film camera",
+      type: "profile",
+    }),
   component: About,
 });
 
@@ -29,7 +26,7 @@ function About() {
         <div className="film-frame">
           <img
             src={portrait.url}
-            alt="The filmmaker with a vintage camera"
+            alt="Kristi Sanxhaku, Los Angeles wedding videographer, with a vintage film camera"
             className="aspect-[4/5] w-full object-cover"
           />
         </div>

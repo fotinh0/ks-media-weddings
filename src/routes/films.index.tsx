@@ -3,24 +3,18 @@ import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { FilmCard } from "@/components/site/FilmCard";
 import { InquirySection } from "@/components/site/InquiryForm";
 import { films } from "@/lib/films";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/films/")({
-  head: () => ({
-    meta: [
-      { title: "Wedding Films — KS Media Weddings" },
-      {
-        name: "description",
-        content: "Watch wedding films by KS Media Weddings, a Los Angeles wedding videographer.",
-      },
-      { property: "og:title", content: "Wedding Films — KS Media Weddings" },
-      {
-        property: "og:description",
-        content: "Real couples, real moments. Watch the full portfolio of wedding films.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Wedding Films Portfolio — KS Media Weddings, Los Angeles",
+      description:
+        "Real couples, real moments. Watch the full portfolio of cinematic wedding films by KS Media Weddings, a Los Angeles wedding videographer.",
+      path: "/films",
+      image: films[0]?.image,
+      imageAlt: films[0] ? `${films[0].couple} wedding film` : undefined,
+    }),
   component: FilmsPage,
 });
 

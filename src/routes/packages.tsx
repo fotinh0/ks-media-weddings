@@ -3,30 +3,21 @@ import { Check } from "lucide-react";
 import { PageShell, PageIntro } from "@/components/site/PageShell";
 import { InquirySection } from "@/components/site/InquiryForm";
 import { packages } from "@/lib/films";
+import { faqJsonLd, jsonLd, pageHead, STARTING_PRICE } from "@/lib/seo";
 
 export const Route = createFileRoute("/packages")({
-  head: () => ({
-    meta: [
-      { title: "Wedding Video Packages & Pricing — KS Media Weddings" },
-      {
-        name: "description",
-        content:
-          "Wedding videography packages from $2,850 with drone, 4K/6K cameras, highlight and documentary films.",
-      },
-      { property: "og:title", content: "Wedding Video Packages — KS Media Weddings" },
-      {
-        property: "og:description",
-        content:
-          "Three collections from $2,850, each with drone coverage and a cinematic highlight film.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const seo = pageHead({
+      title: "Wedding Video Packages & Pricing — KS Media Weddings",
+      description: `Los Angeles wedding videography packages from ${STARTING_PRICE}, each with up to 10 hours of coverage, drone footage, 4K/6K cameras and a cinematic film.`,
+      path: "/packages",
+    });
+    return { ...seo, meta: [...seo.meta, jsonLd(faqJsonLd(faqs))] };
+  },
   component: Packages,
 });
 
-const faqs = [
+const faqs: [string, string][] = [
   [
     "Do you travel?",
     "Yes — I'm based in Southern California and film wherever your love goes. Reach out with your location for details.",

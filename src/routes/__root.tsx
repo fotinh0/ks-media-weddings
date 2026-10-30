@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { absoluteUrl, businessJsonLd, DEFAULT_IMAGE, jsonLd, SITE_NAME } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -79,11 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "KS Media Weddings" },
+      { title: SITE_NAME },
       { name: "description", content: "Wedding videographer based in Los Angeles, California." },
-      { name: "author", content: "KS Media Weddings" },
+      { name: "author", content: SITE_NAME },
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:locale", content: "en_US" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: absoluteUrl(DEFAULT_IMAGE) },
       { name: "twitter:card", content: "summary_large_image" },
+      jsonLd(businessJsonLd),
     ],
     links: [
       {
@@ -96,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,

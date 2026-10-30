@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- KS monogram in the site palette: espresso background, warm tan letters -->
+  <rect width="64" height="64" rx="12" fill="#2b211c"/>
+  <text x="32" y="46" text-anchor="middle" font-family="'Cormorant Garamond', Garamond, Georgia, 'Times New Roman', serif" font-size="38" letter-spacing="-1" fill="#d4b08c">K<tspan font-style="italic">S</tspan></text>
+</svg>
