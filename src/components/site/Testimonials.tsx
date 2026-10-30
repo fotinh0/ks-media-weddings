@@ -1,30 +1,35 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// SAMPLE testimonials — placeholders for Foti to replace with real client quotes.
-const testimonials = [
+// Real client reviews (Zola and wedding directories), excerpted verbatim to fit the carousel.
+export const testimonials = [
   {
-    quote:
-      "We watch our film every anniversary. It's the one thing from the day that puts us right back there.",
-    couple: "Sara & Daniel",
+    quote: "This is the videographer you want by your side capturing life's big moments.",
+    name: "Gabrielle B.",
   },
   {
     quote:
-      "The quiet moments — my dad's hands, her laugh — became the most powerful parts of the film. I cry every time.",
-    couple: "Priya & Marcus",
+      "Thank you so much Kristi for this once in a lifetime fairytale movie you created of our love!",
+    name: "Juliette E.",
+  },
+  {
+    quote: "The final product they delivered was truly top-notch and so heart-warming.",
+    name: "Mk V.",
   },
   {
     quote:
-      "He was invisible all day and somehow caught everything. It feels like our wedding, exactly as it felt.",
-    couple: "Lauren & Tom",
+      "Words cannot describe the wedding video that KS media production made for me and my husband! We were astounded watching it in tears!",
+    name: "Juliette L.",
   },
   {
-    quote: "Worth every penny. Our families have watched it more times than we have.",
-    couple: "Jess & Andre",
+    quote:
+      "On our wedding day, it rained for a good part… The improvisation KS Media had was phenomenal.",
+    name: "Kevin B.",
   },
   {
-    quote: "When the film played at our reception, the whole room went quiet. Pure magic.",
-    couple: "Camille & Rob",
+    quote:
+      "He worked seamlessly throughout the day, capturing every special moment without ever feeling intrusive.",
+    name: "Mylee M.",
   },
 ];
 
@@ -57,7 +62,7 @@ export function TestimonialSection() {
         >
           {testimonials.map((t, i) => (
             <figure
-              key={t.couple}
+              key={t.name}
               aria-hidden={i !== index}
               className={`[grid-area:1/1] transition-opacity duration-700 ${
                 i === index ? "opacity-100" : "pointer-events-none opacity-0"
@@ -66,7 +71,7 @@ export function TestimonialSection() {
               <blockquote className="font-display text-3xl italic leading-snug md:text-4xl">
                 “{t.quote}”
               </blockquote>
-              <figcaption className="eyebrow mt-8 opacity-80">— {t.couple}</figcaption>
+              <figcaption className="eyebrow mt-8 opacity-80">— {t.name}</figcaption>
             </figure>
           ))}
         </div>
@@ -83,7 +88,7 @@ export function TestimonialSection() {
           <div className="flex gap-3">
             {testimonials.map((t, i) => (
               <button
-                key={t.couple}
+                key={t.name}
                 type="button"
                 aria-label={`Show story ${i + 1}`}
                 onClick={() => goTo(i)}

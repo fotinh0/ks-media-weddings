@@ -1,6 +1,6 @@
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { TestimonialSection } from "@/components/site/Testimonials";
+import { TestimonialSection, testimonials } from "@/components/site/Testimonials";
 
 afterEach(() => {
   cleanup();
@@ -11,7 +11,7 @@ describe("Testimonial carousel", () => {
   it("shows the following quote when the next button is clicked", () => {
     render(<TestimonialSection />);
     const slides = screen.getAllByRole("figure", { hidden: true });
-    expect(slides.length).toBe(5);
+    expect(slides.length).toBe(testimonials.length);
     expect(slides[0]!.getAttribute("aria-hidden")).toBe("false");
 
     fireEvent.click(screen.getByRole("button", { name: "Next story" }));
