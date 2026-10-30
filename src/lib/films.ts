@@ -94,7 +94,7 @@ export const packages = [
   },
   {
     name: "The Story",
-    price: "$3,850",
+    price: "$4,050",
     featured: true,
     teaser: "A documentary film that lets you relive the full story of your celebration.",
     items: ["Everything in The Highlight", "40–60 minute documentary film"],
