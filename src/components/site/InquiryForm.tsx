@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { packages } from "@/lib/films";
 
 // Inquiries are relayed by Web3Forms to ksanxhakumedia@gmail.com; nothing is stored.
 // The access key is public by design (Web3Forms client-side key).
@@ -110,9 +111,9 @@ export function InquiryForm() {
         <span className="eyebrow text-muted-foreground">Package interest</span>
         <select name="budget" className={field} defaultValue="">
           <option value="">Not sure yet</option>
-          <option>The Highlight — $2,850</option>
-          <option>The Story — $3,250</option>
-          <option>The Heirloom — $4,050</option>
+          {packages.map((p) => (
+            <option key={p.name}>{`${p.name} — ${p.price}`}</option>
+          ))}
         </select>
       </label>
       <label className="block md:col-span-2">
